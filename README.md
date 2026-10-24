@@ -88,4 +88,4 @@ Desktop screenshots of the home, about, and pricing pages are in `docs/screensho
 
 The repository is ready to push to GitHub and import on Vercel. Those steps are still to be run from this workspace.
 
-Sample rates and concept projects are labelled as demonstration content. A verified phone number, email address, or social profile can be added to the footer and contact page when one is confirmed.
+Sample rates are labelled as demonstration content. The selected-work pictures are client projects, shown as delivered, and they do not report results. A verified phone number, email address, or social profile can be added to the footer and contact page when one is confirmed.

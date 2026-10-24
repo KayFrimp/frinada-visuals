@@ -5,7 +5,9 @@ import { PageHero } from "@/components/layout/PageHero";
 import { ProcessStep } from "@/components/sections/ProcessStep";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { EditorialImage } from "@/components/media/EditorialImage";
 import { brandAssets } from "@/components/brand/Logo";
+import { visuals } from "@/data/visuals";
 import { approachSteps, values, whyFrinada } from "@/data/content";
 import { siteConfig } from "@/data/site";
 import { createPageMetadata } from "@/lib/metadata";
@@ -65,8 +67,11 @@ export default function AboutPage() {
                 sizes="(min-width: 1024px) 480px, 100vw"
               />
             </div>
+            <div className="overflow-hidden rounded-panel border border-line/80 bg-mist shadow-rest">
+              <EditorialImage asset={visuals.hero} sizes="(min-width: 1024px) 480px, 100vw" />
+            </div>
             <figcaption className="text-sm leading-relaxed text-muted">
-              The Frinada Visuals lockup: navy wordmark, peak mark, and the line Excellence in Simplicity.
+              The Frinada Visuals lockup, and a product presentation from client work, shown as it was produced.
             </figcaption>
           </figure>
         </div>

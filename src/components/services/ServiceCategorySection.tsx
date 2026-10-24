@@ -1,6 +1,8 @@
+import { EditorialImage } from "@/components/media/EditorialImage";
 import { ServiceGlyph } from "@/components/services/ServiceGlyph";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site";
+import { visuals } from "@/data/visuals";
 import { itemsForCategory } from "@/data/services";
 import { formatSamplePrice } from "@/lib/currency";
 import type { ServiceCategory } from "@/types";
@@ -76,6 +78,9 @@ function CategoryIntro({ category, inverse = false }: { category: ServiceCategor
       <p className={inverse ? "mt-4 max-w-xl text-base leading-relaxed text-on-navy" : "mt-4 max-w-xl text-base leading-relaxed text-muted"}>
         {category.description}
       </p>
+      <div className="mt-8 overflow-hidden rounded-panel">
+        <EditorialImage asset={visuals.services[category.id]} sizes="(min-width: 1024px) 40vw, 100vw" />
+      </div>
       <CategoryActions inverse={inverse} />
     </div>
   );

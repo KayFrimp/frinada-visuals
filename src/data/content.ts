@@ -166,27 +166,24 @@ export const values: Value[] = [
 export const conceptProjects: ConceptProject[] = [
   {
     id: "pantry",
-    title: "North Market Pantry",
-    service: "Branding and a launch page",
-    summary:
-      "A concept identity for a fictional speciality food range: a mark, a small label system, and a single page that introduces the range.",
-    focus: ["Logo direction", "Label system", "Launch landing page"],
+    title: "Shepherd's Provisions",
+    service: "Brand identity and packaging",
+    summary: "A speciality food identity carried across jars, tins, and labels.",
+    focus: ["Identity system", "Packaging", "Labels"],
   },
   {
     id: "harbour",
-    title: "Harbour & Co.",
+    title: "RCM Consulting",
     service: "Business website",
-    summary:
-      "A concept structure for a fictional advisory firm: services, a short perspective section, and an enquiry path that does not hide the offer.",
+    summary: "An advisory site with a clear service headline and a calm editorial layout.",
     focus: ["Page structure", "Service narrative", "Enquiry path"],
   },
   {
     id: "fieldnote",
-    title: "Fieldnote",
-    service: "Software and deployment planning",
-    summary:
-      "A concept plan for a fictional operations tool: which parts are product decisions, which hosting choices sit with the client, and what remains a consultation.",
-    focus: ["Workflow outline", "Deployment questions", "Handover notes"],
+    title: "Projects Force",
+    service: "Operations software",
+    summary: "An operations product shown on phone, laptop, and tablet, with the same workflow on each screen.",
+    focus: ["Product interface", "Responsive layout", "Day-to-day workflow"],
   },
 ];
 

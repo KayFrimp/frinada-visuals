@@ -1,4 +1,5 @@
 import { BrandMark } from "@/components/brand/Logo";
+import { EditorialImage } from "@/components/media/EditorialImage";
 import { CallToActionSection } from "@/components/layout/CallToActionSection";
 import { PageHero } from "@/components/layout/PageHero";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
@@ -15,6 +16,7 @@ import { conceptProjects, homeProcess, scenarios, studioFeatures, whyPoints } fr
 import { faqsFor } from "@/data/faqs";
 import { serviceCategories } from "@/data/services";
 import { siteConfig } from "@/data/site";
+import { visuals } from "@/data/visuals";
 
 export default function HomePage() {
   return (
@@ -35,21 +37,23 @@ export default function HomePage() {
           </>
         }
         aside={
-          <div className="rounded-panel bg-white p-6 text-navy shadow-float sm:p-8">
-            <BrandMark className="size-16" />
-            <p className="mt-6 text-xs font-semibold tracking-[0.18em] text-red">WE DESIGN. WE BUILD. WE GROW.</p>
-            <ul className="mt-6 divide-y divide-line">
-              {serviceCategories.map((category, index) => (
-                <li key={category.id} className="flex gap-4 py-3">
-                  <span className="font-heading text-sm font-bold text-red">0{index + 1}</span>
-                  <span>
-                    <span className="block font-semibold">{category.shortName}</span>
-                    <span className="mt-1 block text-sm leading-relaxed text-muted">{category.valueProposition}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-xs font-semibold tracking-[0.14em] text-muted uppercase">Ghana · Creative technology</p>
+          <div className="rounded-panel bg-white text-navy shadow-float">
+            <div className="overflow-hidden rounded-[inherit]">
+              <EditorialImage asset={visuals.hero} priority sizes="(min-width: 1024px) 42vw, 100vw" />
+              <div className="p-6 sm:p-8">
+                <BrandMark className="size-16" />
+                <p className="mt-6 text-xs font-semibold tracking-[0.18em] text-red">WE DESIGN. WE BUILD. WE GROW.</p>
+                <ul className="mt-6 divide-y divide-line">
+                  {serviceCategories.map((category, index) => (
+                    <li key={category.id} className="flex items-baseline gap-4 py-3">
+                      <span className="font-heading text-sm font-bold text-red">0{index + 1}</span>
+                      <span className="font-semibold">{category.shortName}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-xs font-semibold tracking-[0.14em] text-muted uppercase">Ghana · Creative technology</p>
+              </div>
+            </div>
           </div>
         }
       />
@@ -103,7 +107,15 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <StudioProductPreview />
+          <div className="space-y-4">
+            <figure className="overflow-hidden rounded-panel border border-line/80 bg-white shadow-rest">
+              <EditorialImage asset={visuals.clientInterface} sizes="(min-width: 1024px) 46vw, 100vw" />
+              <figcaption className="px-5 py-4 text-sm leading-relaxed text-muted">
+                A product interface delivered for a client. The preview below is Frinada Studio on this site, and it stays a guided demonstration.
+              </figcaption>
+            </figure>
+            <StudioProductPreview />
+          </div>
         </div>
       </Section>
 
@@ -125,8 +137,8 @@ export default function HomePage() {
         <SectionHeading
           id="work-title"
           eyebrow="Selected work"
-          title="Concept projects, clearly marked."
-          description="Real client work is not published here. These examples show the kind of problem each service is meant to hold. They are not engagements, and they do not report results."
+          title="Work delivered for clients."
+          description="These pictures are from client projects, shown as they were produced. They illustrate branding, websites, and product interfaces. They do not report results."
         />
         <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {conceptProjects.map((project) => (

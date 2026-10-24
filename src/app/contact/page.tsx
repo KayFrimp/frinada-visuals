@@ -39,7 +39,7 @@ export default function ContactPage() {
                 <li>3. Copy or download it, and share it when you have a confirmed channel.</li>
               </ol>
             </div>
-            <div className="border border-line bg-mist p-5">
+            <div className="rounded-card border border-line/80 bg-mist p-5">
               <h2 className="font-heading text-lg font-bold text-navy">How to reach Frinada Visuals</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted">
                 Use the project form. It prepares a summary in your browser for you to copy or download. This page does not publish a phone number, email address, or office, and the form does not send the brief to a server.

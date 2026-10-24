@@ -21,7 +21,7 @@ export function ServiceCategorySection({
           <CategoryIntro category={category} inverse />
           <ul className="mt-10 grid gap-3 sm:grid-cols-2">
             {items.map((item) => (
-              <li key={item.id} className="border border-white/15 px-4 py-3">
+              <li key={item.id} className="rounded-card border border-white/15 px-4 py-3">
                 <p className="font-semibold text-white">{item.name}</p>
                 <p className="mt-1 text-sm leading-relaxed text-on-navy">{item.summary}</p>
               </li>
@@ -41,7 +41,7 @@ export function ServiceCategorySection({
           <div>
             <ol className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
               {category.benefits.map((benefit, index) => (
-                <li key={benefit} className="border border-line bg-mist p-4">
+                <li key={benefit} className="rounded-card border border-line/80 bg-mist p-4">
                   <p className="font-heading text-sm font-bold text-red">0{index + 1}</p>
                   <p className="mt-2 text-sm leading-relaxed text-ink">{benefit}</p>
                 </li>
@@ -50,7 +50,7 @@ export function ServiceCategorySection({
             <ItemList items={items} className="mt-6" />
           </div>
         ) : (
-          <div className={variant === "list" ? "border-l-2 border-navy pl-5" : "border border-line bg-paper p-6 sm:p-8"}>
+          <div className={variant === "list" ? "border-l-2 border-navy pl-5" : "rounded-panel border border-line/80 bg-paper p-6 shadow-rest sm:p-8"}>
             <h3 className="font-heading text-lg font-bold text-navy">What this can include</h3>
             <ItemList items={items} className="mt-4" />
             <BenefitRow benefits={category.benefits} />
@@ -64,7 +64,7 @@ export function ServiceCategorySection({
 function CategoryIntro({ category, inverse = false }: { category: ServiceCategory; inverse?: boolean }) {
   return (
     <div>
-      <span className={inverse ? "inline-flex size-11 items-center justify-center border border-white/20 text-white" : "inline-flex size-11 items-center justify-center border border-line text-navy"}>
+      <span className={inverse ? "inline-flex size-12 items-center justify-center rounded-control border border-white/20 text-white" : "inline-flex size-12 items-center justify-center rounded-control bg-mist text-navy"}>
         <ServiceGlyph icon={category.icon} />
       </span>
       <h2 id={`${category.anchor}-title`} className={inverse ? "mt-6 font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl" : "mt-6 font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl"}>

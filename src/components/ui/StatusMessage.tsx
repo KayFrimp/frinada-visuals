@@ -19,7 +19,7 @@ export function StatusMessage({
   className?: string;
 }) {
   return (
-    <div role={role} className={cn("border px-4 py-3 text-sm leading-relaxed", tones[tone], className)}>
+    <div role={role} className={cn("rounded-control border px-4 py-3 text-sm leading-relaxed", tones[tone], className)}>
       {children}
     </div>
   );

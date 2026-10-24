@@ -10,7 +10,7 @@ export function EstimateReadout({ estimate }: { estimate: Estimate }) {
     : `Sample subtotal ${total}. ${estimate.customQuoteItems.length} ${estimate.customQuoteItems.length === 1 ? "service needs" : "services need"} a custom quote.`;
 
   return (
-    <div className="border border-line bg-white p-5">
+    <div className="rounded-card border border-line/80 bg-white p-5 shadow-rest">
       <p className="text-xs font-semibold tracking-[0.16em] text-red uppercase">Illustrative estimate</p>
       <p className="mt-3 font-heading text-3xl font-bold tracking-tight text-navy">{estimate.isEmpty ? "—" : total}</p>
       <p className="mt-1 text-sm text-muted">Sample subtotal</p>

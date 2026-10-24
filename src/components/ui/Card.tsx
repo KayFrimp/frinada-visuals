@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { surfaceClass } from "@/lib/styles";
 import type { ReactNode } from "react";
 
 export function Card({
@@ -8,5 +9,5 @@ export function Card({
   className?: string;
   children: ReactNode;
 }) {
-  return <div className={cn("border border-line bg-white p-6 sm:p-8", className)}>{children}</div>;
+  return <div className={cn(surfaceClass, "p-6 sm:p-8", className)}>{children}</div>;
 }

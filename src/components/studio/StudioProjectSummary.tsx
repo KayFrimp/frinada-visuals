@@ -71,7 +71,7 @@ export function StudioProjectSummary({
         id="project-summary"
         readOnly
         value={summary}
-        className="mt-2 min-h-56 w-full border border-line bg-paper p-3 text-sm leading-relaxed text-ink"
+        className="mt-2 min-h-56 w-full rounded-control border border-line bg-paper p-3 text-sm leading-relaxed text-ink"
       />
       {copyState === "copied" ? (
         <StatusMessage tone="success" className="mt-3">

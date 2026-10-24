@@ -17,6 +17,13 @@
   --color-on-navy: #e4e7f2;
   --font-sans: var(--font-inter), "Segoe UI", sans-serif;
   --font-heading: var(--font-manrope), var(--font-inter), sans-serif;
+  --radius-control: 0.75rem;
+  --radius-card: 1.125rem;
+  --radius-panel: 1.5rem;
+  --shadow-rest: 0 1px 2px rgba(2, 0, 81, 0.05), 0 1px 1px rgba(2, 0, 81, 0.04);
+  --shadow-raise: 0 10px 28px rgba(2, 0, 81, 0.1);
+  --shadow-float: 0 18px 44px rgba(2, 0, 81, 0.14);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
@@ -64,6 +71,22 @@
   }
 }
 
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.step-panel {
+  animation: step-in 220ms var(--ease-out-soft);
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -74,6 +97,7 @@
   color: #020051;
   padding: 0.75rem 1rem;
   font-weight: 700;
+  border-radius: var(--radius-control);
 }
 
 .skip-link:focus {

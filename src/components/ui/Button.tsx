@@ -3,14 +3,15 @@ import { cn } from "@/lib/cn";
 import type { ReactNode } from "react";
 
 const variants = {
-  primary: "bg-navy text-white hover:bg-navy-soft active:bg-navy",
-  secondary: "border border-navy bg-white text-navy hover:bg-mist active:bg-line",
-  inverse: "bg-white text-navy hover:bg-on-navy active:bg-white",
-  "inverse-secondary": "border border-white/50 bg-transparent text-white hover:bg-white/10 active:bg-white/15",
+  primary: "bg-navy text-white shadow-rest hover:bg-navy-soft hover:shadow-raise active:bg-navy active:shadow-rest",
+  secondary: "border border-line bg-white text-navy shadow-rest hover:border-navy/30 hover:bg-mist hover:shadow-raise active:bg-line",
+  inverse: "bg-white text-navy shadow-rest hover:bg-on-navy hover:shadow-raise active:bg-white",
+  "inverse-secondary": "border border-white/45 bg-transparent text-white hover:bg-white/10 active:bg-white/15",
   ghost: "bg-transparent text-navy hover:bg-mist active:bg-line",
 } as const;
 
 const sizes = {
+  sm: "min-h-10 px-3 text-sm",
   md: "min-h-11 px-4 text-sm",
   lg: "min-h-12 px-5 text-base",
 } as const;
@@ -43,7 +44,7 @@ export function Button({
   ...props
 }: ButtonProps | LinkProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 text-center font-semibold transition duration-200 ease-out active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:active:translate-y-0 motion-reduce:transition-none motion-reduce:active:translate-y-0",
+    "inline-flex items-center justify-center gap-2 rounded-control text-center font-semibold transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out-soft active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:active:translate-y-0 motion-reduce:transition-none motion-reduce:active:translate-y-0",
     variants[variant],
     sizes[size],
     className,

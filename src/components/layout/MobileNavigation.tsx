@@ -111,7 +111,7 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
         inert={!open ? true : undefined}
         aria-label="Menu"
         className={cn(
-          "absolute top-16 right-0 left-0 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-white px-5 py-4 transition duration-200 ease-out motion-reduce:transition-none",
+          "absolute top-16 right-0 left-0 max-h-[calc(100dvh-4rem)] overflow-y-auto rounded-b-panel border-b border-line bg-white px-5 py-4 shadow-float transition-[transform,opacity] duration-200 ease-out-soft motion-reduce:transition-none",
           open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0",
         )}
       >
@@ -127,8 +127,8 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
                   onClick={onClose}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "flex min-h-12 items-center border-b border-line text-base font-semibold transition-colors duration-200 motion-reduce:transition-none",
-                    active ? "text-navy" : "text-muted hover:text-navy",
+                    "flex min-h-12 items-center rounded-control px-2 text-base font-semibold transition-colors duration-150 ease-out-soft motion-reduce:transition-none",
+                    active ? "bg-mist text-navy" : "text-muted hover:bg-mist hover:text-navy",
                   )}
                 >
                   {item.label}
@@ -140,11 +140,11 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
         <Link
           href={siteConfig.enquiryHref}
           onClick={onClose}
-          className="mt-4 flex min-h-12 items-center justify-center bg-navy px-4 text-sm font-semibold text-white"
+          className="mt-4 flex min-h-12 items-center justify-center rounded-control bg-navy px-4 text-sm font-semibold text-white shadow-rest"
         >
           Start a Project
         </Link>
-        <button type="button" onClick={onClose} className="mt-3 flex min-h-11 w-full items-center justify-center border border-navy px-4 text-sm font-semibold text-navy">
+        <button type="button" onClick={onClose} className="mt-3 flex min-h-11 w-full items-center justify-center rounded-control border border-line px-4 text-sm font-semibold text-navy">
           Close menu
         </button>
       </nav>

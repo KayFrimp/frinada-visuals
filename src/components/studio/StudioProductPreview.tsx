@@ -12,7 +12,7 @@ const previewRows = [
 
 export function StudioProductPreview() {
   return (
-    <div className="border border-line bg-white">
+    <div className="overflow-hidden rounded-panel border border-line/80 bg-white shadow-rest">
       <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4">
         <div className="flex items-center gap-3">
           <BrandMark className="size-10" />

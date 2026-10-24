@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ServiceGlyph } from "@/components/services/ServiceGlyph";
+import { interactiveSurfaceClass } from "@/lib/styles";
 import type { ServiceCategory } from "@/types";
 
 export function ServiceCard({ category }: { category: ServiceCategory }) {
   return (
-    <article className="group relative flex h-full flex-col border border-line bg-white p-6 transition duration-200 ease-out hover:-translate-y-0.5 hover:border-navy hover:shadow-[0_10px_28px_rgba(2,0,81,0.08)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8">
-      <span className="inline-flex size-11 items-center justify-center border border-line bg-mist text-navy transition duration-200 group-hover:border-navy group-hover:bg-white motion-reduce:transition-none">
+    <article className={`group relative flex h-full flex-col p-6 sm:p-8 ${interactiveSurfaceClass}`}>
+      <span className="inline-flex size-12 items-center justify-center rounded-control bg-mist text-navy transition-[background-color,color] duration-200 ease-out-soft group-hover:bg-navy group-hover:text-white motion-reduce:transition-none">
         <ServiceGlyph icon={category.icon} />
       </span>
       <h3 className="mt-6 font-heading text-2xl font-bold tracking-tight text-navy">{category.name}</h3>
@@ -27,7 +28,7 @@ export function ServiceCard({ category }: { category: ServiceCategory }) {
         Explore {category.shortName}
         <ArrowRight
           aria-hidden="true"
-          className="size-4 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+          className="size-4 transition-transform duration-200 ease-out-soft group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
         />
       </Link>
     </article>

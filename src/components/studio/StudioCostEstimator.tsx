@@ -30,8 +30,8 @@ export function StudioCostEstimator({
                   <label
                     key={item.id}
                     className={cn(
-                      "flex cursor-pointer gap-3 border px-3 py-3 text-sm",
-                      checked ? "border-navy bg-mist" : "border-line bg-white",
+                      "flex cursor-pointer gap-3 rounded-card border px-3 py-3 text-sm shadow-rest transition-[border-color,background-color,box-shadow] duration-200 ease-out-soft motion-reduce:transition-none",
+                      checked ? "border-navy/40 bg-mist shadow-raise" : "border-line/80 bg-white hover:border-navy/25",
                     )}
                   >
                     <input

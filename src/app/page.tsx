@@ -35,7 +35,7 @@ export default function HomePage() {
           </>
         }
         aside={
-          <div className="border border-white/15 bg-white p-6 text-navy sm:p-8">
+          <div className="rounded-panel bg-white p-6 text-navy shadow-float sm:p-8">
             <BrandMark className="size-16" />
             <p className="mt-6 text-xs font-semibold tracking-[0.18em] text-red">WE DESIGN. WE BUILD. WE GROW.</p>
             <ul className="mt-6 divide-y divide-line">

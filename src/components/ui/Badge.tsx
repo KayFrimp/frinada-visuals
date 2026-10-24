@@ -18,7 +18,7 @@ export function Badge({
   className?: string;
 }) {
   return (
-    <span className={cn("inline-flex items-center px-2 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase", tones[tone], className)}>
+    <span className={cn("inline-flex items-center rounded-full px-2.5 py-1 text-[0.68rem] font-semibold tracking-[0.14em] uppercase", tones[tone], className)}>
       {children}
     </span>
   );

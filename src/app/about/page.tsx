@@ -46,7 +46,7 @@ export default function AboutPage() {
             </div>
           </div>
           <figure className="space-y-4">
-            <div className="border border-line bg-white p-6 sm:p-8">
+            <div className="rounded-panel border border-line/80 bg-white p-6 shadow-rest sm:p-8">
               <Image
                 src={brandAssets.lockup.src}
                 alt="Frinada Visuals logo. Excellence in Simplicity."
@@ -56,7 +56,7 @@ export default function AboutPage() {
                 style={{ width: "100%", height: "auto" }}
               />
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden border border-line bg-mist">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-panel border border-line/80 bg-mist shadow-rest">
               <Image
                 src="/brand/lockup-print.jpg"
                 alt="The same Frinada Visuals lockup, photographed in print on textured paper."

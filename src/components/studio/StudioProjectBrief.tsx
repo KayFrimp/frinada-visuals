@@ -115,7 +115,7 @@ export function StudioProjectBrief() {
   }
 
   return (
-    <div className="border border-line bg-white">
+    <div className="overflow-hidden rounded-panel border border-line/80 bg-white shadow-rest">
       <div className="flex flex-col gap-3 border-b border-line px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <div>
           <div className="flex flex-wrap items-center gap-2">
@@ -140,27 +140,34 @@ export function StudioProjectBrief() {
             <p ref={stepStatusRef} tabIndex={-1} className="text-sm font-semibold text-navy">
               Step {step + 1} of {wizardSteps.length}: {current.label}
             </p>
-            <div className="mt-2 h-1 bg-line">
-              <div className="h-full bg-navy transition-[width] duration-200 ease-out motion-reduce:transition-none" style={{ width: `${((step + 1) / wizardSteps.length) * 100}%` }} />
+            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-line">
+              <div className="h-full rounded-full bg-navy transition-[width] duration-300 ease-out-soft motion-reduce:transition-none" style={{ width: `${((step + 1) / wizardSteps.length) * 100}%` }} />
             </div>
           </div>
-          <ol className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div className="relative mt-4 rounded-panel bg-mist p-1.5">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute top-1.5 bottom-1.5 left-1.5 hidden rounded-control bg-white shadow-rest transition-transform duration-300 ease-out-soft motion-reduce:transition-none sm:block"
+              style={{ width: "calc((100% - 0.75rem) / 4)", transform: `translateX(${step * 100}%)` }}
+            />
+          <ol className="grid grid-cols-2 gap-1.5 sm:grid-cols-4">
             {wizardSteps.map((item, index) => {
               const complete = index < step;
               const currentStep = index === step;
+              const cell = "relative z-10 flex min-h-11 w-full flex-col items-start rounded-control px-3 py-2 text-left";
               return (
                 <li key={item.id}>
                   {complete ? (
                     <button
                       type="button"
                       onClick={() => goTo(index)}
-                      className="flex min-h-11 w-full flex-col items-start border border-navy px-3 py-2 text-left transition-colors duration-200 hover:bg-mist motion-reduce:transition-none"
+                      className={`${cell} transition-colors duration-150 ease-out-soft hover:bg-white/70 motion-reduce:transition-none`}
                     >
                       <span className="text-xs font-semibold text-red">{item.label}</span>
                       <span className="text-xs text-muted">{item.hint}</span>
                     </button>
                   ) : (
-                    <div className={cn("flex min-h-11 flex-col items-start border px-3 py-2", currentStep ? "border-navy bg-mist" : "border-line")} aria-current={currentStep ? "step" : undefined}>
+                    <div className={cn(cell, currentStep && "bg-white shadow-rest sm:bg-transparent sm:shadow-none")} aria-current={currentStep ? "step" : undefined}>
                       <span className="text-xs font-semibold text-navy">{item.label}</span>
                       <span className="text-xs text-muted">{item.hint}</span>
                     </div>
@@ -169,6 +176,7 @@ export function StudioProjectBrief() {
               );
             })}
           </ol>
+          </div>
 
           {resetMessage ? (
             <StatusMessage tone="info" className="mt-4">
@@ -176,7 +184,7 @@ export function StudioProjectBrief() {
             </StatusMessage>
           ) : null}
 
-          <div className="mt-6">
+          <div key={step} className="step-panel mt-6">
             {step === 0 ? (
               <StudioServiceSelector
                 selectedIds={brief.serviceIds}

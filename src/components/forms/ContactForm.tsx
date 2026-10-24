@@ -118,13 +118,13 @@ function ContactFormBody({
 
   if (prepared && isSubmitSuccessful) {
     return (
-      <div className="border border-line bg-white p-6 sm:p-8">
+      <div className="rounded-panel border border-line/80 bg-white p-6 shadow-rest sm:p-8">
         <Badge tone="green">Brief prepared</Badge>
         <h2 className="mt-4 font-heading text-2xl font-bold text-navy">Your project brief is ready.</h2>
         <p className="mt-3 text-base leading-relaxed text-muted">
           This demonstration does not send information to a server.
         </p>
-        <textarea readOnly value={summary} aria-label="Prepared project summary" className="mt-5 min-h-64 w-full border border-line bg-paper p-3 text-sm leading-relaxed" />
+        <textarea readOnly value={summary} aria-label="Prepared project summary" className="mt-5 min-h-64 w-full rounded-control border border-line bg-paper p-3 text-sm leading-relaxed" />
         {copyState === "copied" ? (
           <StatusMessage tone="success" className="mt-3">
             Summary copied to the clipboard on this device.
@@ -161,7 +161,7 @@ function ContactFormBody({
   return (
     <form
       id="project-form"
-      className="scroll-mt-24 border border-line bg-white p-6 sm:p-8"
+      className="scroll-mt-24 rounded-panel border border-line/80 bg-white p-6 shadow-rest sm:p-8"
       noValidate
       onSubmit={handleSubmit((values) => {
         setPrepared(values);

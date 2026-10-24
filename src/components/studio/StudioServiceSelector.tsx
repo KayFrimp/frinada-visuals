@@ -17,7 +17,7 @@ export function StudioServiceSelector({
   return (
     <div>
       {error ? (
-        <p id="studio-selection-error" tabIndex={-1} role="alert" className="mb-4 border border-red-deep/30 bg-[#fdecee] px-4 py-3 text-sm font-medium text-red-deep">
+        <p id="studio-selection-error" tabIndex={-1} role="alert" className="mb-4 rounded-control border border-red-deep/30 bg-[#fdecee] px-4 py-3 text-sm font-medium text-red-deep">
           {error}
         </p>
       ) : (
@@ -37,8 +37,8 @@ export function StudioServiceSelector({
                   <label
                     key={item.id}
                     className={cn(
-                      "flex h-full cursor-pointer flex-col border p-4 transition duration-200 ease-out motion-reduce:transition-none",
-                      checked ? "border-navy bg-mist shadow-[0_8px_20px_rgba(2,0,81,0.06)]" : "border-line bg-white hover:border-navy",
+                      "flex h-full cursor-pointer flex-col rounded-card border p-4 shadow-rest transition-[border-color,background-color,box-shadow] duration-200 ease-out-soft motion-reduce:transition-none",
+                      checked ? "border-navy/40 bg-mist shadow-raise" : "border-line/80 bg-white hover:border-navy/25 hover:shadow-raise",
                     )}
                   >
                     <span className="flex items-start gap-3">

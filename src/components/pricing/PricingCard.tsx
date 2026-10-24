@@ -1,5 +1,7 @@
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
+import { interactiveSurfaceClass } from "@/lib/styles";
 import type { PricingPackage } from "@/types";
 
 export function PricingCard({
@@ -14,8 +16,10 @@ export function PricingCard({
   return (
     <article
       className={cn(
-        "flex h-full flex-col border bg-white p-6 transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(2,0,81,0.08)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8",
-        active ? "border-navy shadow-[0_10px_28px_rgba(2,0,81,0.12)]" : "border-line hover:border-navy",
+        "flex h-full flex-col p-6 sm:p-8",
+        interactiveSurfaceClass,
+        active && "border-navy/40 shadow-raise",
+        pkg.featured && "ring-1 ring-navy/15",
       )}
     >
       <div className="flex items-start justify-between gap-3">
@@ -33,17 +37,9 @@ export function PricingCard({
         ))}
       </ul>
       <p className="mt-5 text-sm font-semibold text-navy">Quotation, not a fixed price</p>
-      <button
-        type="button"
-        aria-pressed={active}
-        onClick={onSelect}
-        className={cn(
-          "mt-6 min-h-11 border px-4 text-sm font-semibold transition duration-200 motion-reduce:transition-none",
-          active ? "border-navy bg-navy text-white" : "border-navy text-navy hover:bg-mist active:bg-line",
-        )}
-      >
+      <Button type="button" variant={active ? "primary" : "secondary"} aria-pressed={active} onClick={onSelect} className="mt-6 w-full">
         {active ? "Comparing this package" : "Compare this package"}
-      </button>
+      </Button>
     </article>
   );
 }

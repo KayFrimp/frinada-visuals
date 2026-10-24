@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="bg-navy text-on-navy">
       <Container className="grid gap-10 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="max-w-sm">
-          <Link href="/" aria-label="Frinada Visuals, home" className="inline-flex bg-white p-3">
+          <Link href="/" aria-label="Frinada Visuals, home" className="inline-flex rounded-card bg-white p-3 shadow-rest">
             <Logo variant="lockup" alt="" />
           </Link>
           <p className="mt-5 text-sm leading-relaxed text-on-navy">

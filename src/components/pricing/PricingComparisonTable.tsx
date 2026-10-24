@@ -8,7 +8,7 @@ export function PricingComparisonTable({ active }: { active: PackageId | null })
       tabIndex={0}
       role="region"
       aria-label="Package comparison. Scroll sideways if the table is wider than the screen."
-      className="overflow-x-auto border border-line"
+      className="overflow-x-auto rounded-card border border-line/80 shadow-rest"
     >
       <table className="w-full min-w-[760px] border-collapse text-left text-sm">
         <caption className="sr-only">

@@ -15,11 +15,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
   return (
     <textarea
       ref={ref}
+      {...props}
       id={id}
       aria-invalid={error || undefined}
       aria-describedby={describedBy(id, error, hint)}
       className={cn(controlClass, "min-h-36 resize-y leading-relaxed", className)}
-      {...props}
     />
   );
 });

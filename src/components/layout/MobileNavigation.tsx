@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { mainNavigation, siteConfig } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 export function MobileNavigation({ open, onClose }: { open: boolean; onClose: () => void }) {
   const pathname = usePathname();
-  const panelId = useId();
+  const panelId = "mobile-navigation";
   const firstLink = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
         previous.focus();
       }
     };
-  }, [open, onClose, panelId]);
+  }, [open, onClose]);
 
   const previousPath = useRef(pathname);
 
@@ -77,13 +77,16 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
   }
 
   return (
-    <div className="fixed inset-0 z-40 bg-navy/40 lg:hidden" onClick={onClose}>
-      <nav
+    <div className="fixed inset-0 z-40 lg:hidden">
+      <button type="button" tabIndex={-1} aria-hidden="true" className="absolute inset-0 bg-navy/40" onClick={onClose} />
+      <div
         id={panelId}
-        aria-label="Mobile"
-        className="absolute top-16 right-0 left-0 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-white px-5 py-4 shadow-none"
-        onClick={(event) => event.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu"
+        className="absolute top-16 right-0 left-0 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-white px-5 py-4"
       >
+      <nav aria-label="Mobile">
         <ul className="flex flex-col">
           {mainNavigation.map((item, index) => {
             const active = pathname === item.href;
@@ -112,7 +115,11 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
         >
           Start a Project
         </Link>
+        <button type="button" onClick={onClose} className="mt-3 flex min-h-11 w-full items-center justify-center border border-navy px-4 text-sm font-semibold text-navy">
+          Close menu
+        </button>
       </nav>
+      </div>
     </div>
   );
 }

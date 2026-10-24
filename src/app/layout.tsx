@@ -49,7 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable} h-full`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${manrope.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-white font-sans text-body antialiased">
         <a className="skip-link" href="#main">
           Skip to content

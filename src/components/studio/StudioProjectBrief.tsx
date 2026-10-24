@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StudioServiceSelector } from "@/components/studio/StudioServiceSelector";
 import { StudioProjectSummary } from "@/components/studio/StudioProjectSummary";
 import { EstimateReadout } from "@/components/studio/EstimateReadout";
@@ -26,11 +26,28 @@ export function StudioProjectBrief() {
   const [resetMessage, setResetMessage] = useState(false);
   const estimate = estimateSelection(brief.serviceIds);
   const current = wizardSteps[step];
+  const stepStatusRef = useRef<HTMLParagraphElement>(null);
+  const hasMounted = useRef(false);
+
+  useEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
+    stepStatusRef.current?.focus();
+  }, [step]);
+
+  useEffect(() => {
+    if (!selectionError) {
+      return;
+    }
+    document.getElementById("studio-selection-error")?.focus();
+  }, [selectionError]);
 
   function focusFirst(fields: string[]) {
-    const id = fields.find((field) => document.getElementById(field));
-    if (id) {
-      document.getElementById(id)?.focus();
+    const field = fields.find((name) => document.getElementById(`studio-${name}`));
+    if (field) {
+      document.getElementById(`studio-${field}`)?.focus();
     }
   }
 
@@ -111,15 +128,16 @@ export function StudioProjectBrief() {
         </div>
       </div>
       <div className="grid gap-8 px-5 py-6 sm:px-6 lg:grid-cols-[minmax(0,1fr)_300px]">
-        <div className="order-2 min-w-0 lg:order-1">
+        <div className="min-w-0">
           <div
             role="progressbar"
+            aria-label="Project brief progress"
             aria-valuemin={1}
             aria-valuemax={wizardSteps.length}
             aria-valuenow={step + 1}
             aria-valuetext={`Step ${step + 1} of ${wizardSteps.length}: ${current.label}`}
           >
-            <p className="text-sm font-semibold text-navy">
+            <p ref={stepStatusRef} tabIndex={-1} className="text-sm font-semibold text-navy">
               Step {step + 1} of {wizardSteps.length}: {current.label}
             </p>
             <div className="mt-2 h-1 bg-line">
@@ -186,7 +204,7 @@ export function StudioProjectBrief() {
             </div>
           ) : null}
         </div>
-        <div className="order-1 lg:order-2 lg:sticky lg:top-24 lg:self-start">
+        <div className="lg:sticky lg:top-24 lg:self-start">
           <EstimateReadout estimate={estimate} />
         </div>
       </div>
@@ -205,9 +223,9 @@ function DetailsStep({
 }) {
   return (
     <div className="grid gap-5">
-      <FormField id="contactName" label="Your name" required error={errors.contactName}>
+      <FormField id="studio-contactName" label="Your name" required error={errors.contactName}>
         <Input
-          id="contactName"
+          id="studio-contactName"
           autoComplete="name"
           maxLength={80}
           value={brief.contactName}
@@ -215,9 +233,9 @@ function DetailsStep({
           onChange={(event) => onChange({ contactName: event.target.value })}
         />
       </FormField>
-      <FormField id="email" label="Email address" required error={errors.email} hint="Used only in the summary on this device.">
+      <FormField id="studio-email" label="Email address" required error={errors.email} hint="Used only in the summary on this device.">
         <Input
-          id="email"
+          id="studio-email"
           type="email"
           autoComplete="email"
           inputMode="email"
@@ -228,9 +246,9 @@ function DetailsStep({
           onChange={(event) => onChange({ email: event.target.value })}
         />
       </FormField>
-      <FormField id="organisation" label="Company or organisation" error={errors.organisation} hint="Optional.">
+      <FormField id="studio-organisation" label="Company or organisation" error={errors.organisation} hint="Optional.">
         <Input
-          id="organisation"
+          id="studio-organisation"
           autoComplete="organization"
           maxLength={120}
           value={brief.organisation}
@@ -239,18 +257,18 @@ function DetailsStep({
           onChange={(event) => onChange({ organisation: event.target.value })}
         />
       </FormField>
-      <FormField id="projectName" label="Project name" required error={errors.projectName}>
+      <FormField id="studio-projectName" label="Project name" required error={errors.projectName}>
         <Input
-          id="projectName"
+          id="studio-projectName"
           maxLength={100}
           value={brief.projectName}
           error={Boolean(errors.projectName)}
           onChange={(event) => onChange({ projectName: event.target.value })}
         />
       </FormField>
-      <FormField id="description" label="Project description" required error={errors.description} hint={`${brief.description.length} / 2,000 characters. At least 20.`}>
+      <FormField id="studio-description" label="Project description" required error={errors.description} hint={`${brief.description.length} / 2,000 characters. At least 20.`}>
         <Textarea
-          id="description"
+          id="studio-description"
           maxLength={2000}
           value={brief.description}
           error={Boolean(errors.description)}
@@ -276,8 +294,8 @@ function PlanStep({
       <p className="text-sm leading-relaxed text-muted">
         These are preferences, not a price. Choosing a range does not reserve budget or set a quotation.
       </p>
-      <FormField id="budget" label="Budget preference" required error={errors.budget}>
-        <Select id="budget" value={brief.budget} error={Boolean(errors.budget)} onChange={(event) => onChange({ budget: event.target.value })}>
+      <FormField id="studio-budget" label="Budget preference" required error={errors.budget}>
+        <Select id="studio-budget" value={brief.budget} error={Boolean(errors.budget)} onChange={(event) => onChange({ budget: event.target.value })}>
           <option value="">Choose a preference</option>
           {budgetOptions.map((option) => (
             <option key={option.id} value={option.id}>
@@ -286,8 +304,8 @@ function PlanStep({
           ))}
         </Select>
       </FormField>
-      <FormField id="timeline" label="Timeline preference" required error={errors.timeline}>
-        <Select id="timeline" value={brief.timeline} error={Boolean(errors.timeline)} onChange={(event) => onChange({ timeline: event.target.value })}>
+      <FormField id="studio-timeline" label="Timeline preference" required error={errors.timeline}>
+        <Select id="studio-timeline" value={brief.timeline} error={Boolean(errors.timeline)} onChange={(event) => onChange({ timeline: event.target.value })}>
           <option value="">Choose a preference</option>
           {timelineOptions.map((option) => (
             <option key={option.id} value={option.id}>

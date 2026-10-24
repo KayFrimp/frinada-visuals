@@ -38,9 +38,7 @@ export function Header() {
           </button>
         </div>
       </div>
-      <div id="mobile-navigation">
-        <MobileNavigation open={open} onClose={close} />
-      </div>
+      <MobileNavigation open={open} onClose={close} />
     </header>
   );
 }

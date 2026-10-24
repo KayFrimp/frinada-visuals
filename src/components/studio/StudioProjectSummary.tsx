@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { StatusMessage } from "@/components/ui/StatusMessage";
+import { budgetOptions, labelForOption, timelineOptions } from "@/data/pricing";
 import { siteConfig } from "@/data/site";
 import { formatGhsFromPesewas } from "@/lib/currency";
 import { formatProjectSummary } from "@/lib/summary";
@@ -54,10 +55,12 @@ export function StudioProjectSummary({
           </dd>
         </div>
         <div>
-          <dt className="font-semibold text-navy">Budget and timeline</dt>
-          <dd className="mt-1 break-words text-muted">
-            See the summary for the preferences you chose.
-          </dd>
+          <dt className="font-semibold text-navy">Budget preference</dt>
+          <dd className="mt-1 break-words text-muted">{labelForOption(budgetOptions, brief.budget)}</dd>
+        </div>
+        <div>
+          <dt className="font-semibold text-navy">Timeline preference</dt>
+          <dd className="mt-1 break-words text-muted">{labelForOption(timelineOptions, brief.timeline)}</dd>
         </div>
       </dl>
       <p className="mt-4 break-words text-sm leading-relaxed text-body">{brief.description}</p>

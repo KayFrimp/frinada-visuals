@@ -15,11 +15,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   return (
     <select
       ref={ref}
+      {...props}
       id={id}
       aria-invalid={error || undefined}
       aria-describedby={describedBy(id, error, hint)}
       className={cn(controlClass, "bg-white", className)}
-      {...props}
     >
       {children}
     </select>

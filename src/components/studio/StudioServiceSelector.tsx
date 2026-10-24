@@ -17,7 +17,7 @@ export function StudioServiceSelector({
   return (
     <div>
       {error ? (
-        <p role="alert" className="mb-4 border border-red-deep/30 bg-[#fdecee] px-4 py-3 text-sm font-medium text-red-deep">
+        <p id="studio-selection-error" tabIndex={-1} role="alert" className="mb-4 border border-red-deep/30 bg-[#fdecee] px-4 py-3 text-sm font-medium text-red-deep">
           {error}
         </p>
       ) : (

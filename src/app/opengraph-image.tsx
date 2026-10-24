@@ -1,7 +1,11 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+const logoSrc = `data:image/png;base64,${readFileSync(join(process.cwd(), "public/brand/logo-on-light.png")).toString("base64")}`;
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -11,16 +15,24 @@ export default function OpenGraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
           background: "#020051",
-          color: "#ffffff",
-          padding: "80px",
         }}
       >
-        <div style={{ fontSize: 28, letterSpacing: 6, color: "#e4e7f2" }}>CREATIVE TECHNOLOGY</div>
-        <div style={{ fontSize: 84, fontWeight: 700, marginTop: 24, lineHeight: 1 }}>FRINADA VISUALS</div>
-        <div style={{ fontSize: 28, marginTop: 28, letterSpacing: 4, color: "#ffd0d6" }}>EXCELLENCE IN SIMPLICITY</div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            background: "#ffffff",
+            padding: "56px 64px 48px",
+          }}
+        >
+          {/* next/og paints this element itself. next/image cannot be used inside ImageResponse. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoSrc} width={720} height={275} alt="" />
+          <div style={{ marginTop: 28, fontSize: 28, color: "#020051" }}>Creative Technology & Digital Solutions</div>
+        </div>
       </div>
     ),
     size,

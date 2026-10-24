@@ -40,9 +40,9 @@ export default function ContactPage() {
               </ol>
             </div>
             <div className="border border-line bg-mist p-5">
-              <h2 className="font-heading text-lg font-bold text-navy">Direct contact details</h2>
+              <h2 className="font-heading text-lg font-bold text-navy">How to reach Frinada Visuals</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                A public phone number, email address, office address, and social profiles are not listed, because none were available to verify. They will be added when they can be confirmed. Until then, the project form is the enquiry path on this site.
+                Use the project form. It prepares a summary in your browser for you to copy or download. This page does not publish a phone number, email address, or office, and the form does not send the brief to a server.
               </p>
             </div>
             <div>

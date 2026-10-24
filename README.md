@@ -24,7 +24,7 @@ Copy `.env.example` to `.env.local` when you have a public URL:
 NEXT_PUBLIC_SITE_URL=https://your-deployment.example
 ```
 
-That value is used for canonical links, Open Graph URLs, the sitemap, and robots.txt. It defaults to `http://localhost:3000`. No production domain is assumed.
+That value is used for canonical links, Open Graph URLs, the sitemap, and robots.txt. When the variable is unset, those URLs use the verified deployment at `https://frinada-visuals.vercel.app`. Set it when the public address changes. Do not invent a different domain.
 
 ## Scripts
 
@@ -65,7 +65,7 @@ UI primitives (`Button`, `Section`, `FormField`, `Accordion`, and the rest) live
 
 ## Brand
 
-Navy `#020051` and white carry the interface. Green is used for positive selection, red for the wordmark accent, errors, and focus. The supplied lockups are rasters on solid backgrounds, so the header uses a typographic reconstruction of the same wordmark and peak mark. The printed lockup is shown on the About page.
+Navy `#020051` and white carry the interface. Green is used for positive selection, red for the wordmark accent, errors, and focus. The header, footer, About page, favicon, and Open Graph image use the supplied Frinada Visuals lockup. The source artwork is a raster on a solid background, so the footer places that light lockup on a white plate. A transparent or vector master would be sharper for final production, especially if the mark should sit directly on navy.
 
 Public phone, email, office address, and social profiles are not listed. None were available to verify, and the site does not invent them.
 
@@ -82,7 +82,7 @@ No database, authentication, or server form handler is required.
 
 `npm run typecheck`, `npm run lint`, `npm test`, and `npm run build` are the checks to run before submission.
 
-Desktop and mobile screenshots of all five pages are in `docs/screenshots`. They were captured from the production build at 1440px and 390px. At 320px, 390px, and 1440px the document width matches the viewport, so the pages do not scroll sideways.
+Desktop screenshots of the home, about, and pricing pages are in `docs/screenshots`, captured from the production build at 1440px. In the browser, the document width matched the viewport at 320px, 390px, and 1440px.
 
 ## Submission notes
 

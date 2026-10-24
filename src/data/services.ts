@@ -1,5 +1,11 @@
 import type { CatalogueItem, ServiceCategory } from "@/types";
 
+// Illustrative calculator samples only. An earlier design sheet listed lower cedis
+// figures (logo design GH₵150, social graphics GH₵100, flyers and posters GH₵100,
+// branding packages GH₵200, business cards GH₵100, invitation cards GH₵100).
+// Those figures are not published as current rates, and the samples below are not
+// approved commercial prices. Confirm either list before treating it as a quotation.
+
 export const serviceCategories: ServiceCategory[] = [
   {
     id: "web",

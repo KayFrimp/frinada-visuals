@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { mainNavigation, siteConfig } from "@/data/site";
 import { cn } from "@/lib/cn";
@@ -10,6 +10,11 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
   const pathname = usePathname();
   const panelId = "mobile-navigation";
   const firstLink = useRef<HTMLAnchorElement>(null);
+  const [present, setPresent] = useState(open);
+
+  if (open && !present) {
+    setPresent(true);
+  }
 
   useEffect(() => {
     if (!open) {
@@ -72,19 +77,43 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
     onClose();
   }, [pathname, onClose]);
 
-  if (!open) {
+  useEffect(() => {
+    if (open) {
+      return;
+    }
+
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 200;
+    const timeout = window.setTimeout(() => setPresent(false), delay);
+    return () => window.clearTimeout(timeout);
+  }, [open]);
+
+  if (!present) {
     return null;
   }
 
   return (
-    <div className="fixed inset-0 z-40 lg:hidden">
-      <button type="button" tabIndex={-1} aria-hidden="true" className="absolute inset-0 bg-navy/40" onClick={onClose} />
+    <div className={cn("fixed inset-0 z-40 lg:hidden", !open && "pointer-events-none")}>
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-hidden="true"
+        className={cn(
+          "absolute inset-0 bg-navy/40 transition-opacity duration-200 motion-reduce:transition-none",
+          open ? "opacity-100" : "opacity-0",
+        )}
+        onClick={onClose}
+      />
       <div
         id={panelId}
         role="dialog"
-        aria-modal="true"
+        aria-modal={open}
+        aria-hidden={!open}
+        inert={!open ? true : undefined}
         aria-label="Menu"
-        className="absolute top-16 right-0 left-0 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-white px-5 py-4"
+        className={cn(
+          "absolute top-16 right-0 left-0 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-line bg-white px-5 py-4 transition duration-200 ease-out motion-reduce:transition-none",
+          open ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0",
+        )}
       >
       <nav aria-label="Mobile">
         <ul className="flex flex-col">
@@ -98,8 +127,8 @@ export function MobileNavigation({ open, onClose }: { open: boolean; onClose: ()
                   onClick={onClose}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "flex min-h-12 items-center border-b border-line text-base font-semibold",
-                    active ? "text-navy" : "text-muted",
+                    "flex min-h-12 items-center border-b border-line text-base font-semibold transition-colors duration-200 motion-reduce:transition-none",
+                    active ? "text-navy" : "text-muted hover:text-navy",
                   )}
                 >
                   {item.label}

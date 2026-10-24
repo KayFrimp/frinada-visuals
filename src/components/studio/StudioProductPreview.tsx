@@ -1,4 +1,4 @@
-import { PeakMark } from "@/components/brand/Logo";
+import { BrandMark } from "@/components/brand/Logo";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { studioFeatures } from "@/data/content";
@@ -15,7 +15,7 @@ export function StudioProductPreview() {
     <div className="border border-line bg-white">
       <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4">
         <div className="flex items-center gap-3">
-          <PeakMark className="h-8 w-10 text-navy" />
+          <BrandMark className="size-10" />
           <p className="font-heading text-sm font-bold tracking-wide text-navy">FRINADA STUDIO</p>
         </div>
         <Badge tone="mist">Preview</Badge>

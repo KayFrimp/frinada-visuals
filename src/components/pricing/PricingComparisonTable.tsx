@@ -33,7 +33,7 @@ export function PricingComparisonTable({ active }: { active: PackageId | null })
                 {row.label}
               </th>
               {pricingPackages.map((pkg) => (
-                <td key={pkg.id} className={cn("px-4 py-3 align-top text-body", active === pkg.id && "bg-[#eef0fa]")}>
+                <td key={pkg.id} className={cn("px-4 py-3 align-top text-body transition-colors duration-200 motion-reduce:transition-none", active === pkg.id && "bg-[#eef0fa]")}>
                   {row.values[pkg.id]}
                 </td>
               ))}

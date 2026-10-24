@@ -5,6 +5,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { ProcessStep } from "@/components/sections/ProcessStep";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { brandAssets } from "@/components/brand/Logo";
 import { approachSteps, values, whyFrinada } from "@/data/content";
 import { siteConfig } from "@/data/site";
 import { createPageMetadata } from "@/lib/metadata";
@@ -40,22 +41,32 @@ export default function AboutPage() {
                 This website is part of that direction. Frinada Studio, shown as an interactive preview, is the product idea for making the first steps of a project easier to organise. It is not a claim that a customer portal already exists.
               </p>
               <p>
-                Frinada Visuals is based in Ghana, with the intention to work with businesses across Africa and internationally. Dates, headcount, awards, and a street address are not published here, because they have not been confirmed for this site.
+                Frinada Visuals is based in Ghana. Projects can stay local or reach further, with the same attention to a clear brand and software a business can actually use.
               </p>
             </div>
           </div>
-          <figure>
+          <figure className="space-y-4">
+            <div className="border border-line bg-white p-6 sm:p-8">
+              <Image
+                src={brandAssets.lockup.src}
+                alt="Frinada Visuals logo. Excellence in Simplicity."
+                width={brandAssets.lockup.width}
+                height={brandAssets.lockup.height}
+                className="h-auto w-full"
+                style={{ width: "100%", height: "auto" }}
+              />
+            </div>
             <div className="relative aspect-[4/3] overflow-hidden border border-line bg-mist">
               <Image
                 src="/brand/lockup-print.jpg"
-                alt="Printed Frinada Visuals wordmark on textured paper, with the navy name, the peak mark, and the red line Excellence in Simplicity."
+                alt="The same Frinada Visuals lockup, photographed in print on textured paper."
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 480px, 100vw"
               />
             </div>
-            <figcaption className="mt-3 text-sm leading-relaxed text-muted">
-              The supplied lockup, shown in print. The header uses a typographic version of the same wordmark so it stays sharp on white and on navy. The source files are photographs and rasters on solid backgrounds, so they are not used as the interface logo.
+            <figcaption className="text-sm leading-relaxed text-muted">
+              The Frinada Visuals lockup: navy wordmark, peak mark, and the line Excellence in Simplicity.
             </figcaption>
           </figure>
         </div>
@@ -106,12 +117,6 @@ export default function AboutPage() {
               <p className="mt-2 text-sm leading-relaxed text-muted">{point.description}</p>
             </article>
           ))}
-        </div>
-        <div className="mt-12 max-w-2xl border border-line bg-paper p-6">
-          <h3 className="font-heading text-xl font-bold text-navy">People</h3>
-          <p className="mt-3 text-sm leading-relaxed text-muted">
-            Team profiles are not published on this site. Frinada Visuals will introduce people by name only with their agreement, rather than use stock portraits or invented biographies.
-          </p>
         </div>
       </Section>
       <CallToActionSection

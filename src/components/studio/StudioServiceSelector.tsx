@@ -37,8 +37,8 @@ export function StudioServiceSelector({
                   <label
                     key={item.id}
                     className={cn(
-                      "flex h-full cursor-pointer flex-col border p-4",
-                      checked ? "border-navy bg-mist" : "border-line bg-white hover:border-navy",
+                      "flex h-full cursor-pointer flex-col border p-4 transition duration-200 ease-out motion-reduce:transition-none",
+                      checked ? "border-navy bg-mist shadow-[0_8px_20px_rgba(2,0,81,0.06)]" : "border-line bg-white hover:border-navy",
                     )}
                   >
                     <span className="flex items-start gap-3">

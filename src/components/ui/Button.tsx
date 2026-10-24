@@ -3,11 +3,11 @@ import { cn } from "@/lib/cn";
 import type { ReactNode } from "react";
 
 const variants = {
-  primary: "bg-navy text-white hover:bg-navy-soft",
-  secondary: "border border-navy bg-white text-navy hover:bg-mist",
-  inverse: "bg-white text-navy hover:bg-on-navy",
-  "inverse-secondary": "border border-white/50 bg-transparent text-white hover:bg-white/10",
-  ghost: "bg-transparent text-navy hover:bg-mist",
+  primary: "bg-navy text-white hover:bg-navy-soft active:bg-navy",
+  secondary: "border border-navy bg-white text-navy hover:bg-mist active:bg-line",
+  inverse: "bg-white text-navy hover:bg-on-navy active:bg-white",
+  "inverse-secondary": "border border-white/50 bg-transparent text-white hover:bg-white/10 active:bg-white/15",
+  ghost: "bg-transparent text-navy hover:bg-mist active:bg-line",
 } as const;
 
 const sizes = {
@@ -43,7 +43,7 @@ export function Button({
   ...props
 }: ButtonProps | LinkProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 text-center font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 text-center font-semibold transition duration-200 ease-out active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:active:translate-y-0 motion-reduce:transition-none motion-reduce:active:translate-y-0",
     variants[variant],
     sizes[size],
     className,

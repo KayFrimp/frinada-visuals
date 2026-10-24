@@ -141,7 +141,7 @@ export function StudioProjectBrief() {
               Step {step + 1} of {wizardSteps.length}: {current.label}
             </p>
             <div className="mt-2 h-1 bg-line">
-              <div className="h-full bg-navy" style={{ width: `${((step + 1) / wizardSteps.length) * 100}%` }} />
+              <div className="h-full bg-navy transition-[width] duration-200 ease-out motion-reduce:transition-none" style={{ width: `${((step + 1) / wizardSteps.length) * 100}%` }} />
             </div>
           </div>
           <ol className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -154,7 +154,7 @@ export function StudioProjectBrief() {
                     <button
                       type="button"
                       onClick={() => goTo(index)}
-                      className="flex min-h-11 w-full flex-col items-start border border-navy px-3 py-2 text-left"
+                      className="flex min-h-11 w-full flex-col items-start border border-navy px-3 py-2 text-left transition-colors duration-200 hover:bg-mist motion-reduce:transition-none"
                     >
                       <span className="text-xs font-semibold text-red">{item.label}</span>
                       <span className="text-xs text-muted">{item.hint}</span>

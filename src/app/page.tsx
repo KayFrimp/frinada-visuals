@@ -1,4 +1,4 @@
-import { PeakMark } from "@/components/brand/Logo";
+import { BrandMark } from "@/components/brand/Logo";
 import { CallToActionSection } from "@/components/layout/CallToActionSection";
 import { PageHero } from "@/components/layout/PageHero";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
@@ -36,7 +36,7 @@ export default function HomePage() {
         }
         aside={
           <div className="border border-white/15 bg-white p-6 text-navy sm:p-8">
-            <PeakMark className="h-14 w-20 text-navy" />
+            <BrandMark className="size-16" />
             <p className="mt-6 text-xs font-semibold tracking-[0.18em] text-red">WE DESIGN. WE BUILD. WE GROW.</p>
             <ul className="mt-6 divide-y divide-line">
               {serviceCategories.map((category, index) => (

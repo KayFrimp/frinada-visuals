@@ -31,17 +31,34 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
               <button
                 id={buttonId}
                 type="button"
-                className="flex w-full items-center justify-between gap-4 py-4 text-left font-heading text-lg font-semibold text-navy"
+                className="flex w-full items-center justify-between gap-4 py-4 text-left font-heading text-lg font-semibold text-navy transition-colors duration-200 hover:text-navy-soft motion-reduce:transition-none"
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => toggle(item.id)}
               >
                 <span>{item.title}</span>
-                <ChevronDown aria-hidden="true" className={cn("size-5 shrink-0 transition-transform", open && "rotate-180")} />
+                <ChevronDown
+                  aria-hidden="true"
+                  className={cn(
+                    "size-5 shrink-0 transition-transform duration-200 ease-out motion-reduce:transition-none",
+                    open && "rotate-180",
+                  )}
+                />
               </button>
             </h3>
-            <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!open}>
-              <p className="max-w-3xl pb-5 text-base leading-relaxed text-muted">{item.content}</p>
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
+              inert={!open ? true : undefined}
+              className={cn(
+                "grid transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none",
+                open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+              )}
+            >
+              <div className="overflow-hidden">
+                <p className="max-w-3xl pb-5 text-base leading-relaxed text-muted">{item.content}</p>
+              </div>
             </div>
           </div>
         );

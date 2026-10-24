@@ -12,7 +12,12 @@ export function PricingCard({
   onSelect: () => void;
 }) {
   return (
-    <article className={cn("flex h-full flex-col border bg-white p-6 sm:p-8", active ? "border-navy" : "border-line")}>
+    <article
+      className={cn(
+        "flex h-full flex-col border bg-white p-6 transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(2,0,81,0.08)] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-8",
+        active ? "border-navy shadow-[0_10px_28px_rgba(2,0,81,0.12)]" : "border-line hover:border-navy",
+      )}
+    >
       <div className="flex items-start justify-between gap-3">
         <h3 className="font-heading text-2xl font-bold text-navy">{pkg.name}</h3>
         {pkg.featured ? <Badge>Common starting point</Badge> : null}
@@ -32,7 +37,10 @@ export function PricingCard({
         type="button"
         aria-pressed={active}
         onClick={onSelect}
-        className="mt-6 min-h-11 border border-navy px-4 text-sm font-semibold text-navy hover:bg-mist"
+        className={cn(
+          "mt-6 min-h-11 border px-4 text-sm font-semibold transition duration-200 motion-reduce:transition-none",
+          active ? "border-navy bg-navy text-white" : "border-navy text-navy hover:bg-mist active:bg-line",
+        )}
       >
         {active ? "Comparing this package" : "Compare this package"}
       </button>

@@ -1,6 +1,6 @@
 import type { NavItem } from "@/types";
 
-const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://frinada-visuals.vercel.app";
 
 export const siteConfig = {
   name: "Frinada Visuals",

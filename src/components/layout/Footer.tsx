@@ -10,8 +10,8 @@ export function Footer() {
     <footer className="bg-navy text-on-navy">
       <Container className="grid gap-10 py-14 sm:py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="max-w-sm">
-          <Link href="/" aria-label="Frinada Visuals, home">
-            <Logo tone="light" showTagline />
+          <Link href="/" aria-label="Frinada Visuals, home" className="inline-flex bg-white p-3">
+            <Logo variant="lockup" alt="" />
           </Link>
           <p className="mt-5 text-sm leading-relaxed text-on-navy">
             A creative technology company in Ghana. We help businesses establish a brand, build practical software, and put reliable digital work online.
@@ -50,7 +50,7 @@ export function Footer() {
             Open the product preview
           </Link>
           <p className="mt-6 text-sm leading-relaxed">
-            Public phone, email, and social profiles are not listed here because none were available to verify. Start with the project form.
+            Start with the project form. It prepares a summary in your browser and does not send that summary on its own.
           </p>
           <Link href={siteConfig.enquiryHref} className={`${inverseLinkClass} mt-3 inline-flex`}>
             Start a project
